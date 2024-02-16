@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
+    <meta
+      name="description"
+      content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard."
+    />
+    <meta
+      name="keywords"
+      content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard"
+    />
+    <meta name="author" content="PIXINVENT" />
+    <title>Members of team</title>
+    <link
+      rel="apple-touch-icon"
+      href="../static/app-assets/images/ico/apple-icon-120.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/app-assets/images/ico/favicon.ico"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/fonts/material-icons/material-icons.css"
+    />
+
+    <!-- BEGIN: Vendor CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/vendors/css/material-vendors.min.css"
+    />
+    {% if kanban %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css"
+    />
+    {% endif %}
+
+    {% if kanban %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/vendors/css/jkanban/jkanban.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/vendors/css/editors/quill/quill.snow.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/vendors/css/pickers/pickadate/pickadate.css"
+    />
+    {% endif %}
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/material.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/components.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/bootstrap-extended.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/material-extended.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/material-colors.css"
+    />
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    {% if not kanban%}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/core/menu/menu-types/material-vertical-compact-menu.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/core/colors/material-palette-gradient.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/fonts/mobiriseicons/24px/mobirise/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/pages/app-contacts.css"
+    />
+    {% endif%}
+
+    {% if kanban%}
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="../static/app-assets/css/core/menu/menu-types/material-vertical-compact-menu.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/core/colors/material-palette-gradient.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/fonts/mobiriseicons/24px/mobirise/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/app-assets/css/pages/app-kanban.css"
+    />
+    {% endif%}
+    <!-- END: Page CSS-->
+
+    {% if kanban%}
+    <style>
+      body{
+          background-color: rgb(53, 53, 83) !important;
+      }
+      .styleTitle{
+        font-weight: 600 !important;
+        font-size: 1.2em;
+        color: rgb(10, 10, 10);
+      }
+      #kanban-wrapper .kanban-drag{
+        max-height: 35em !important; 
+        overflow-y: auto; 
+      }
+    </style>
+    {% endif%}
+    <!-- BEGIN: Custom CSS-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/assets/css/style.css"
+    />
+    <!-- END: Custom CSS-->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+
+  <body
+    class="vertical-layout vertical-compact-menu material-vertical-layout material-layout content-detached-left-sidebar app-contacts fixed-navbar"  data-open="click" data-menu="vertical-compact-menu" data-col="2-columns"
+  >
+    {% include "layout.html" %} {% block content %}
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-header row"></div>
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+        <div class="content-detached">
+          <div class="content-body">
+            <div class="content-overlay"></div>
+
+            {% if not kanban %}
+
+            <div class="row">
+              <div class="col-12 mt-1 mb-1">
+                <h1 class="text-uppercase">Candidates</h1>
+              </div>
+            </div>
+
+            <section class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div
+                    class="card-body"
+                    style="display: grid; grid-template-columns: 4fr 1fr"
+                  >
+                    <div class="bug-list-search">
+                      <div class="bug-list-search-content">
+                        <div class="sidebar-toggle d-block d-lg-none">
+                          <i class="ft-menu font-large-1"></i>
+                        </div>
+                        <form action="#">
+                          <div class="position-relative">
+                            <input
+                              type="search"
+                              id="search-users"
+                              class="form-control"
+                              placeholder="Search candidats..."
+                            />
+                            <div class="form-control-position">
+                              <i
+                                class="la la-search text-size-base text-muted la-rotate-270"
+                              ></i>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="d-flex">
+                      <div style="width: max-content">
+                        <select
+                          style="padding-bottom: 0.3em"
+                          id="projectinput5"
+                          name="interested"
+                          class="form-control"
+                        >
+                          <option value="none" selected="">Newers</option>
+                          <option value="design">Qualified</option>
+                          <option value="development">Negociation</option>
+                          <option value="illustration">Student</option>
+                        </select>
+                      </div>
+                      <div style="width: max-content">
+                        <select
+                          style="padding-bottom: 0.3em"
+                          id="projectinput5"
+                          name="interested"
+                          class="form-control"
+                        >
+                          <option value="none" selected="">Added today</option>
+                          <option value="design">Added Yesterday</option>
+                          <option value="development">Added last week</option>
+                          <option value="illustration">Added last month</option>
+                        </select>
+                      </div>
+                      <div style="width: max-content">
+                        <select
+                          style="padding-bottom: 0.3em"
+                          id="projectinput5"
+                          name="interested"
+                          class="form-control"
+                        >
+                          <option value="me" selected="">Added by me</option>
+                          {% for user in users_data %}
+                          <option value="{{user.username}}">
+                            {{user.username}}
+                          </option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <button
+                        id="kanban"
+                        class="btn btn-secondary btn-sm mr-1 ml-1"
+                      >
+                        <img
+                          style="width: 2em"
+                          src="../../static/app-assets/images/icons/kanban.png"
+                          alt=""
+                        />
+                      </button>
+                      <button
+                        class="btn btn-primary btn-sm"
+                        data-toggle="modal"
+                        data-target="#AddContactModal"
+                      >
+                        <span class="d-md-block d-none"
+                          ><span class="mbri-plus"></span> Add candidate</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            
+            <section class="row all-contacts">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-head">
+                    <div class="card-header">
+                      <div class="heading-elements mt-0">
+                        <div
+                          class="modal fade"
+                          id="AddContactModal"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="exampleModalLabel1"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <section class="contact-form">
+                                <form
+                                  id="form-add-contact"
+                                  class="contact-input"
+                                >
+                                  <div class="modal-header">
+                                    <h5
+                                      class="modal-title"
+                                      id="exampleModalLabel1"
+                                    >
+                                      Add New Contact
+                                    </h5>
+                                    <button
+                                      type="button"
+                                      class="close"
+                                      data-dismiss="modal"
+                                      aria-label="Close"
+                                    >
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="contact-name"
+                                        class="contact-name form-control"
+                                        placeholder="Name"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="contact-email"
+                                        class="contact-email form-control"
+                                        placeholder="Email"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="contact-phone"
+                                        class="contact-phone form-control"
+                                        placeholder="Phone Number"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <div
+                                        class="custom-control custom-checkbox"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          class="custom-control-input"
+                                          id="checkboxsmallallq"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="checkboxsmallallq"
+                                          >favorite</label
+                                        >
+                                      </div>
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="file"
+                                        class="form-control-file"
+                                        id="user-image"
+                                      />
+                                    </fieldset>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <fieldset
+                                      class="form-group position-relative has-icon-left mb-0"
+                                    >
+                                      <button
+                                        type="button"
+                                        id="add-contact-item"
+                                        class="btn btn-info add-contact-item"
+                                        data-dismiss="modal"
+                                      >
+                                        <i
+                                          class="la la-paper-plane-o d-block d-lg-none"
+                                        ></i>
+                                        <span class="d-none d-lg-block"
+                                          >Add New</span
+                                        >
+                                      </button>
+                                    </fieldset>
+                                  </div>
+                                </form>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="modal fade"
+                          id="EditUserModal"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <section class="contact-form">
+                                <form
+                                  id="form-edit-contact"
+                                  class="contact-input"
+                                >
+                                  <div class="modal-header">
+                                    <h5
+                                      class="modal-title"
+                                      id="exampleModalLabel"
+                                    >
+                                      Edit user
+                                    </h5>
+                                    <button
+                                      type="button"
+                                      class="close"
+                                      data-dismiss="modal"
+                                      aria-label="Close"
+                                    >
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="username"
+                                        class="name form-control"
+                                        placeholder="Username"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="first_name"
+                                        class="name form-control"
+                                        placeholder="First name"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="last_name"
+                                        class="name form-control"
+                                        placeholder="Last name"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="email"
+                                        class="name form-control"
+                                        placeholder="Email"
+                                      />
+                                    </fieldset>
+                                    <fieldset class="form-group col-12">
+                                      <input
+                                        type="text"
+                                        id="phone_number"
+                                        class="email form-control"
+                                        placeholder="Phone number"
+                                      />
+                                    </fieldset>
+                                    <span id="fav" class="d-none"></span>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <fieldset
+                                      class="form-group position-relative has-icon-left mb-0"
+                                    >
+                                      <button
+                                        type="button"
+                                        id="edit-user-item"
+                                        class="btn btn-info edit-contact-item"
+                                        data-dismiss="modal"
+                                      >
+                                        <i
+                                          class="la la-paper-plane-o d-lg-none"
+                                        ></i>
+                                        <span class="d-none d-lg-block"
+                                          >Edit</span
+                                        >
+                                      </button>
+                                    </fieldset>
+                                  </div>
+                                </form>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        {% if candidates_data %}
+
+                        <div class="card-content">
+                          <div class="table-responsive">
+                            <table class="table table-de mb-0">
+                              <thead>
+                                <tr>
+                                  <th>First name</th>
+                                  <th>Last name</th>
+                                  <th>Phone</th>
+                                  <th>Class</th>
+                                  <th>School</th>
+                                  <th>Add date</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                {% for candidat in candidates_data %}
+                                <tr>
+                                  {% if candidat['sexe'] == 'F' %}
+                                  <td>
+                                    <img
+                                      style="width: 1em; margin-right: 10px"
+                                      src="../static/app-assets/images/icons/female-symbol.png"
+                                      alt=""
+                                    />{{ candidat['prenom'] }}
+                                  </td>
+                                  {% else %}
+                                  <td>
+                                    <img
+                                      style="width: 1em; margin-right: 10px"
+                                      src="../static/app-assets/images/icons/gender.png"
+                                      alt=""
+                                    />{{ candidat['prenom'] }}
+                                  </td>
+                                  {% endif %}
+                                  <td>{{ candidat['nom'] }}</td>
+                                  <td>{{ candidat['telephone'] }}</td>
+                                  <td>{{ candidat['classe'] }}</td>
+                                  <td>{{ candidat['etablissement'] }}</td>
+                                  <td>{{ candidat['date_ajout'] }}</td>
+                                  <td>
+                                    <a
+                                      class="primary edit mr-1"
+                                      data-id="{{candidat.id}}"
+                                      ><i class="la la-pencil"></i
+                                    ></a>
+                                    <a class="danger delete mr-1"
+                                      ><i class="la la-trash-o"></i
+                                    ></a>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            {% endif %}
+
+            {% if kanban %}
+            {% include "candidates/candidates_kanban.html" %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    {% include "footer.html" %}
+    <!-- END: Footer-->
+
+    <script>
+    //   username = "";
+    //   // Importer les observables nécessaires de RxJS
+    //   const { fromEvent } = rxjs;
+    //   const { map } = rxjs.operators;
+    //   const updateSubject = new rxjs.Subject();
+
+      $(document).ready(function () {
+
+        $("#kanban").click(function () {
+          window.location =
+            "{{url_for('ui_candidats.get_all_candidates', kanban=True)}}";
+        });
+    //     // Lorsque le bouton "Edit" est cliqué
+    //     $(".primary").click(function () {
+    //       // Récupérer l'ID du candidat à partir de l'attribut data
+    //       var userId = $(this).data("id");
+    //       username = userId;
+
+    //       // alert(userId);
+
+    //       // Récupérer les informations du candidat par Ajax (remplacez cette partie avec votre logique)
+    //       $.ajax({
+    //         url: "users/get_user_by_id/" + userId,
+    //         method: "GET",
+    //         success: function (data) {
+    //           // Remplir les champs du formulaire dans le modal avec les données du candidat
+    //           $("#username").val(data.username);
+    //           $("#first_name").val(data.first_name);
+    //           $("#last_name").val(data.last_name);
+    //           $("#email").val(data.email);
+    //           $("#phone_number").val(data.phone_number);
+    //           $("#fav").text(data.favorite).addClass("d-none");
+
+    //           // Ouvrir le modal
+    //           $("#EditUserModal").modal("show");
+    //         },
+    //         error: function (err) {
+    //           console.log(err);
+    //         },
+    //       });
+    //     });
+
+    //     // Lorsque le bouton "Edit" dans le modal est cliqué
+    //     $("#edit-user-item").click(function () {
+    //       // Récupérer les données du formulaire
+    //       var formData = {
+    //         username: $("#username").val(),
+    //         first_name: $("#first_name").val(),
+    //         last_name: $("#last_name").val(),
+    //         email: $("#email").val(),
+    //         phone_number: $("#phone_number").val(),
+    //       };
+
+    //       // Envoyer les données du formulaire par Ajax
+    //       $.ajax({
+    //         url: "users/update_user/" + username,
+    //         method: "PUT",
+    //         data: formData,
+    //         success: function (response) {
+    //           // Fermer le modal
+    //           $("#EditUserModal").modal("hide");
+
+    //           showAlert("success", response.message);
+
+    //           // Mettre à jour les données affichées dans le tableau sans actualiser la page
+    //           // Vous devrez implémenter cette fonctionnalité en fonction de votre structure HTML
+    //           updateTableWithData(formData);
+    //         },
+    //         error: function (err) {
+    //           console.log(err.responseJSON.message);
+    //         },
+    //       });
+    //     });
+
+    //     // Souscrire à des mises à jour
+    //     updateSubject.subscribe((userData) => {
+    //       var tableRow = $(
+    //         '#members tbody tr[data-user-id="' + userData.username + '"]'
+    //       );
+
+    //       tableRow
+    //         .find(".name")
+    //         .text(userData.first_name + " " + userData.last_name);
+    //       tableRow
+    //         .find(".email")
+    //         .attr("href", "mailto:" + userData.email)
+    //         .text(userData.email);
+    //       tableRow.find(".phone").text(userData.phone_number);
+
+    //       console.log(
+    //         "Membre mis à jour avec succès! ",
+    //         "de ",
+    //         userData.username
+    //       );
+    //     });
+
+    //     function updateTableWithData(userData) {
+    //       updateSubject.next(userData);
+    //     }
+
+    //     function showAlert(type, message) {
+    //       // Afficher une alerte Bootstrap en fonction du type
+    //       var alertClass =
+    //         type === "success" ? "alert-success" : "alert-danger";
+
+    //       var alertHtml =
+    //         '<div class="alert ' +
+    //         alertClass +
+    //         ' alert-dismissible fade show" role="alert">' +
+    //         "<strong>" +
+    //         type.charAt(0).toUpperCase() +
+    //         type.slice(1) +
+    //         "!</strong> " +
+    //         message +
+    //         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+    //         '<span aria-hidden="true">&times;</span></button></div>';
+
+    //       // Ajouter l'alerte à un conteneur d'alertes dans votre page HTML
+    //       $("#alert-container").html(alertHtml);
+    //     }
+
+        
+      });
+    </script>
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="../static/app-assets/vendors/js/material-vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    {% if kanban %}
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../static/app-assets/vendors/js/jkanban/jkanban.min.js"></script>
+    <script src="../static/app-assets/vendors/js/editors/quill/quill.min.js"></script>
+    <script src="../static/app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="../static/app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <!-- END: Page Vendor JS-->
+    {% endif %}
+
+    <!-- BEGIN: Theme JS-->
+    <script src="../static/app-assets/js/core/app-menu.js"></script>
+    <script src="../static/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+      {% if kanban %}
+      <script src="../static/app-assets/js/scripts/pages/material-app.js"></script>
+      {% endif %}
+    <!-- END: Page JS-->
+
+    {% endblock %}
+  </body>
+  <!-- END: Body-->
+</html>

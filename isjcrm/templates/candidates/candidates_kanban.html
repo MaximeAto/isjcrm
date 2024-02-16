@@ -1,0 +1,230 @@
+
+  {% block content %}
+
+    <section class="row">
+      <div class="col-12">
+        <div class="card">
+          <div
+            class="card-body"
+            style="display: grid; grid-template-columns: 4fr 1fr"
+          >
+            <div class="bug-list-search">
+              <div class="bug-list-search-content">
+                <div class="sidebar-toggle d-block d-lg-none">
+                  <i class="ft-menu font-large-1"></i>
+                </div>
+                <form action="#">
+                  <div class="position-relative">
+                    <input
+                      type="search"
+                      id="search-users"
+                      class="form-control"
+                      placeholder="Search candidats..."
+                    />
+                    <div class="form-control-position">
+                      <i
+                        class="la la-search text-size-base text-muted la-rotate-270"
+                      ></i>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div style="width: max-content">
+                <select
+                  style="padding-bottom: 0.3em"
+                  id="projectinput5"
+                  name="interested"
+                  class="form-control"
+                >
+                  <option value="none" selected="">Added today</option>
+                  <option value="design">Added Yesterday</option>
+                  <option value="development">Added last week</option>
+                  <option value="illustration">Added last month</option>
+                </select>
+              </div>
+              <div style="width: max-content">
+                <select
+                  style="padding-bottom: 0.3em"
+                  id="projectinput5"
+                  name="interested"
+                  class="form-control"
+                >
+                  <option value="me" selected="">Added by me</option>
+                  {% for user in users_data %}
+                  <option value="{{user.username}}">{{user.username}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <button
+                id="list"
+                class="btn btn-secondary btn-sm mr-1 ml-1"
+                onclick="backtolist()"
+              >
+                <span class="mbri-arrow-prev"></span>Back to list
+              </button>
+              <button
+                class="btn btn-primary btn-sm"
+                data-toggle="modal"
+                data-target="#AddContactModal"
+              >
+                <span class="d-md-block d-none"
+                  ><span class="mbri-plus"></span> Add candidate</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="kanban-wrapper">
+      <!-- User new mail right area -->
+      <div class="kanban-sidebar">
+        
+      </div>
+      <!--/ User Chat profile right area -->
+    </section>
+
+    <script>
+      function backtolist() {
+        window.location = "{{ url_for('ui_candidats.get_all_candidates') }}";
+      }
+      $(document).ready(function () {
+
+        user_id = '{{user_id}}'
+        candidatsArray = JSON.parse('{{ candidates_data | tojson | safe }}')
+        candidatsArray.forEach(candidate => {candidate.title = `<span class="styleTitle">${candidate.nom} ${candidate.prenom}</span>`, candidate.class = "itemClass"} );
+        
+        var kanban_data,kanban_item
+        
+        var nouveauArray = candidatsArray.filter(c => c.etatcandidature === 'NOUVEAU');
+        var qualifieArray = candidatsArray.filter(c => c.etatcandidature === 'QUALIFIE');
+        var negociationArray = candidatsArray.filter(c => c.etatcandidature === 'NEGOCIATION');
+        var etudiantArray = candidatsArray.filter(c => c.etatcandidature === 'ETUDIANT');
+        var perduArray = candidatsArray.filter(c => c.etatcandidature === 'PERDU');
+
+
+
+        // Kanban Board and Item Data passed by json
+        var kanban_board_data = [
+          {
+            id: "NOUVEAU",
+            title: "NEW",
+            dragTo: ["QUALIFIE","NEGOCIATION","ETUDIANT","PERDU"],
+            item: nouveauArray,
+          },
+          {
+            id: "QUALIFIE",
+            title: "QUALIFIED",
+            dragTo: ["NEGOCIATION","ETUDIANT","PERDU"],
+            item: qualifieArray,
+          },
+          {
+            id: "NEGOCIATION",
+            title: "NEGOCIATION",
+            dragTo: ["ETUDIANT","PERDU"],
+            item: negociationArray,
+          },
+          {
+            id: "ETUDIANT",
+            title: "STUDENT",
+            dragTo: [],
+            item: etudiantArray,
+          },
+          {
+            id: "PERDU",
+            title: "LOST",
+            dragTo: [],
+            item: perduArray,
+
+          },
+        ];
+
+      // Kanban Board
+      var candidateKanban = new jKanban({
+        element: "#kanban-wrapper",
+        addItemButton: false, 
+        gutter           : '20em', 
+        boards: kanban_board_data,
+        dropEl: function (el, target, source, sibling) {
+          // Obtenez l'ID du candidat déplacé
+          var dataEidValue = el.getAttribute('data-eid')
+
+          getparent(dataEidValue)
+
+        },
+        
+      });
+
+ 
+      function getparent(idchild){
+
+        parent = candidateKanban.getParentBoardID(idchild)
+
+        fetch("candidats/update_status/" + idchild +"/"+ parent, {
+              method: 'PUT',
+          })
+          .then(response => {
+              if(!response.ok){
+                  return response.json().then(data => {
+                    //data.message à recupperer si besoin 
+                  });
+              }else{
+                  return response.json().then(data => {
+                    //data.message à recupperer si besoin 
+                  });
+              }
+          })
+          .catch(error => {
+          console.error('Erreur lors de la récupération des données:', error.message);
+          });
+      }
+
+      var board_item_id, board_item_el;
+
+      // Ajouter des détails spécifiques à chaque carte
+      for (kanban_data in kanban_board_data) {
+          for (kanban_item in kanban_board_data[kanban_data].item) {
+            var board_item_details = kanban_board_data[kanban_data].item[kanban_item];
+            var board_item_id = board_item_details.id; 
+            (board_item_el = candidateKanban.findElement(board_item_id)),
+            (board_item_custom_details = board_item_dueDate = " ");
+
+            // Ajoutez vos détails spécifiques ici en utilisant les données de chaque objet
+            if (typeof ($(board_item_el).attr("data-nom") || $(board_item_el).attr("data-prenom"))!== "undefined") {
+              var board_item_custom_details = `
+                <div>
+                  <p style = "padding-top: 0.5em;"> School : ${board_item_details.etablissement} <br/>Class : ${board_item_details.classe}</p>
+                  <p style = ""> </p>
+                </div>
+              `;
+            }
+          
+            if(typeof($(board_item_el).attr("data-date_ajout"))!== "undefined"){
+              var board_item_dueDate =
+                '<div class="kanban-due-date mr-50">' +
+                '<i class="ft-clock font-size-small mr-25"></i>' +
+                '<span class="font-size-small">' +
+                $(board_item_el).attr("data-date_ajout") +
+                "</span>" +
+                "</div>";
+            }
+
+    
+            if(typeof($(board_item_el).attr("data-date_ajout")||$(board_item_el).attr("data-nom") || $(board_item_el).attr("data-prenom"))!== "undefined"){
+              $(board_item_el).append(
+              board_item_custom_details +
+              '<div class="kanban-footer d-flex justify-content-between mt-1">' +
+              '<div class="kanban-footer-left d-flex">' +
+              board_item_dueDate +
+              "</div>"
+            );
+            }
+          }
+        }
+      });
+    </script>
+
+  {% endblock %}

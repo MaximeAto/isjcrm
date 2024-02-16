@@ -1,0 +1,27 @@
+
+# # DEVELOPMENT KEY
+# DEV_SECRET_KEY = 'WO2JxQLMzAMAnIZfRYbVtR8yfPPbfBSJ'
+
+# # TESTING KEY
+# TEST_SECRET_KEY = 'WO2JxQLMzAMAnIZfRYbVtR8yfPPbfBSJ'
+
+# # PRODUCTION KEY
+# SECRET_KEY = 'WO2JxQLMzAMAnIZfRYbVtR8yfPPbfBSJ'
+
+# # DEVELOPMENT DATABASE SETTINGS
+# DEV_DB_HOST = 'localhost'
+# DEV_DB_USER = 'postgres'
+# DEV_DB_PASS = '10322'
+# DEV_DB_NAME = 'eeazycrm'
+
+# # TEST DATABASE SETTINGS
+# TEST_DB_HOST = 'localhost'
+# TEST_DB_USER = 'postgres'
+# TEST_DB_PASS = '10322'
+# TEST_DB_NAME = 'eeazycrm'
+
+# # PRODUCTION DATABASE SETTINGS (Default)
+# DB_HOST = 'localhost'
+# DB_USER = 'postgres'
+# DB_PASS = '10322'
+# DB_NAME = 'eeazycrm'

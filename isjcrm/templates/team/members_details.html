@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+    <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="PIXINVENT">
+    <title>Contacts - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
+    <link rel="apple-touch-icon" href="../static/app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/fonts/material-icons/material-icons.css">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/css/material-vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/material.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/material-extended.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/material-colors.css">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/core/menu/menu-types/material-vertical-compact-menu.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/core/colors/material-palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/fonts/mobiriseicons/24px/mobirise/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/pages/app-contacts.css">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-compact-menu material-vertical-layout material-layout content-detached-left-sidebar app-contacts  fixed-navbar" data-open="click" data-menu="vertical-compact-menu" data-col="content-detached-left-sidebar">
+
+    {% include "layout.html" %}
+    {% block content %}
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-header row">
+        </div>
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="sidebar-detached sidebar-left">
+                <div class="sidebar">
+                    <div class="bug-list-sidebar-content">
+                        <!-- Predefined Views -->
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="media p-1">
+                                    <div class="media-left pr-1"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="../static/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span></div>
+                                    <div class="media-body media-middle">
+                                        <h5 class="media-heading">{{user_name}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- contacts view -->
+                            <div class="card-body border-top-blue-grey border-top-lighten-5">
+                                <div class="list-group bg-info sidebar-item" data-target="view-details">
+                                    <a href="#" class="list-group-item list-group-item-action"><span class="mbri-contact-form"></span>  View details</a>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <p class="lead">Tasks</p>
+                                <ul class="list-group">
+                                    <li class="list-group-item active">
+                                        <span class="badge badge-warning badge-pill float-right">{{nb_nouveaux}}</span> <a href="#" style="color: black;"> All candidates</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge badge-info badge-pill float-right">{{nb_etudiants}}</span><a href="#" style="color: black;"> All students</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Groups-->
+                            <div class="card-body">
+                                <p class="lead">Tasks</p>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="badge badge-primary badge-pill float-right">14</span> <a href="#" style="color: black;"> Completed</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge badge-info badge-pill float-right">22</span> <a href="#" style="color: black;"> Incompleted</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/ Groups-->
+                        </div>
+                        <!--/ Predefined Views -->
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="content-detached content-right content-section">
+                <div class="content-body">
+                    <div class="content-overlay"></div>
+                    <section class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="bug-list-search">
+                                        <div class="bug-list-search-content">
+                                            <div class="sidebar-toggle d-block d-lg-none"><i class="ft-menu font-large-1"></i></div>
+                                            <form action="#">
+                                                <div class="position-relative">
+                                                    <input type="search" id="search-contacts" class="form-control" placeholder="Search contacts...">
+                                                    <div class="form-control-position">
+                                                        <i class="la la-search text-size-base text-muted la-rotate-270"></i>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="row all-contacts">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-head">
+                                    <div class="card-header">
+                                       
+                                        <div class="heading-elements mt-0">
+                                            <div class="modal fade" id="AddContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <section class="contact-form">
+                                                            <form id="form-add-contact" class="contact-input">
+                                                              
+                                                                <div class="modal-body">
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="contact-name" class="contact-name form-control" placeholder="Name">
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="contact-email" class="contact-email form-control" placeholder="Email">
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="contact-phone" class="contact-phone form-control" placeholder="Phone Number">
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" class="custom-control-input" id="checkboxsmallallq">
+                                                                            <label class="custom-control-label" for="checkboxsmallallq">favorite</label>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="file" class="form-control-file" id="user-image">
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <fieldset class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" id="add-contact-item" class="btn btn-info add-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-block d-lg-none"></i> <span class="d-none d-lg-block">Add New</span></button>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="EditContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <section class="contact-form">
+                                                            <form id="form-edit-contact" class="contact-input">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Contact</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="name" class="name form-control" placeholder="Name">
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="email" class="email form-control" placeholder="Email">
+                                                                    </fieldset>
+                                                                    <fieldset class="form-group col-12">
+                                                                        <input type="text" id="phone" class="phone form-control" placeholder="Phone Number">
+                                                                    </fieldset>
+                                                                    <span id="fav" class="d-none"></span>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <fieldset class="form-group position-relative has-icon-left mb-0">
+                                                                        <button type="button" id="edit-contact-item" class="btn btn-info edit-contact-item" data-dismiss="modal"><i class="la la-paper-plane-o d-lg-none"></i> <span class="d-none d-lg-block">Edit</span></button>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="members" class="table table-white-space table-bordered row-grouping display no-wrap icheck table-middle text-center">
+                                                
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for candidat in candidates_data %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="media">
+                                                                <div class="media-left pr-1"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="../static/app-assets/images/portrait/small/avatar-s-2.png" alt="avatar"><i></i></span></div>
+                                                                <div class="media-body media-middle" style="text-align: start;">
+                                                                    <a class="media-heading name">{{candidat.nom}} {{candidat.prenom}}</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-left">
+                                                            <a class="email" href="mailto:{{candidat.email}}">{{candidat.email}}</a>
+                                                        </td>
+                                                        <td class="phone text-left" >{{candidat.telephone}}</td>
+                                                        <td>
+                                                            <span class="dropdown">
+                                                                <a id="btnSearchDrop2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="dropdown-toggle dropdown-menu-right"><i class="la la-ellipsis-v"></i></a>
+                                                                <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
+                                                                    <a data-toggle="modal" data-target="#EditContactModal" class="dropdown-item edit"><i class="ft-edit-2"></i>
+                                                                        Edit</a>
+                                                                    <a href="#" class="dropdown-item delete"><i class="ft-trash-2"></i> Delete</a>
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                {% endfor %}
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    {% include "footer.html" %}
+    <!-- END: Footer-->
+    
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-item').on('click', function (e) {
+                e.preventDefault();
+                
+
+                $('.content-section').hide();
+                
+
+                var target = $(this).data('target');
+
+                $('#' + target).fadeIn();
+            });
+        });
+    </script>
+    
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="../static/app-assets/vendors/js/material-vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../static/app-assets/vendors/js/tables/jquery.dataTables.min.js"></script>
+    <script src="../static/app-assets/vendors/js/extensions/jquery.raty.js"></script>
+    <script src="../static/app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="../static/app-assets/js/core/app-menu.js"></script>
+    <script src="../static/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="../static/app-assets/js/scripts/pages/material-app.js"></script>
+    <script src="../static/app-assets/js/scripts/pages/app-contacts.js"></script>
+    <!-- END: Page JS-->
+
+    {% endblock %}
+</body>
+<!-- END: Body-->
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+    <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="PIXINVENT">
+    <title>Dashboard sales - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/app-assets/images/ico/apple-icon-120.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../static/app-assets/images/ico/favicon.ico') }}">
+    <link  rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/fonts/material-icons/material-icons.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/vendors/css/material-vendors.min.css') }}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/material.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/components.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/bootstrap-extended.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/material-extended.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/material-colors.css') }}">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/core/menu/menu-types/material-vertical-compact-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/core/colors/material-palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/fonts/mobiriseicons/24px/mobirise/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/vendors/css/charts/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/fonts/simple-line-icons/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/core/colors/material-palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/css/pages/card-statistics.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/app-assets/vendors/css/cryptocoins/cryptocoins.css') }}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/assets/css/style.css') }}">
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-compact-menu material-vertical-layout material-layout 2-columns   fixed-navbar" data-open="click" data-menu="vertical-compact-menu" data-col="2-columns">
+    {% include "layout.html" %}
+    {% block content %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-body">
+                <!-- stats with icon, subtitle & bg gradient color section start -->
+                <section id="stats-icon-subtitle-bg-1">
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <h1 class="text-uppercase">A little statistics</h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card overflow-hidden">
+                                <div class="card-content">
+                                    <div class="media align-items-stretch bg-gradient-x-warning text-white rounded">
+                                        <div class="p-2 media-middle">
+                                            <i class="mbri-user font-large-2 text-white"></i>
+                                        </div>
+                                        <div class="media-body p-2">
+                                            <h4 class="text-white">Total number of candidates </h4>
+                                            <span>Between Newness and Negotiation</span>
+                                        </div>
+                                        {% if nb_nouveaux < 10 %}
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">0{{nb_nouveaux}}</h1>
+                                        </div>
+                                        {% else %}
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">{{nb_nouveaux}}</h1>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="media align-items-stretch bg-gradient-x-success text-white rounded">
+                                        <div class="p-2 media-middle">
+                                            <i class="mbri-user font-large-2 text-white"></i>
+                                        </div>
+                                        <div class="media-body p-2">
+                                            <h4 class="text-white">Total candidates converted to student</h4>
+                                            <span>Has student status</span>
+                                        </div>
+                                        {% if nb_etudiants < 10 %}
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">0{{nb_etudiants}}</h1>
+                                        </div>
+                                        {% else %}
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">{{nb_etudiants}}</h1>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card overflow-hidden">
+                                <div class="card-content">
+                                    <div class="media align-items-stretch bg-gradient-x-info text-white rounded">
+                                        <div class="p-2 media-middle">
+                                            <i class="mbri-bulleted-list font-large-2 text-white"></i>
+                                        </div>
+                                        <div class="media-body p-2">
+                                            <h4 class="text-white">Tasks completed</h4>
+                                            <span>For month</span>
+                                        </div>
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">1000</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="media align-items-stretch bg-gradient-x-danger text-white rounded">
+                                        <div class="p-2 media-middle">
+                                            <i class="mbri-bulleted-list font-large-2 text-white"></i>
+                                        </div>
+                                        <div class="media-body p-2">
+                                            <h4 class="text-white">Incompletes tasks</h4>
+                                            <span>Monthly</span>
+                                        </div>
+                                        <div class="media-right p-2 media-middle">
+                                            <h1 class="text-white">800</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Active Orders -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                {% if candidates_data %}
+                                <div class="card-header">
+                                    <h4 class="card-title">Last add</h4>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <button class="btn btn-sm round btn-primary btn-glow"><i class="mbri-contact-form pr-1 font-medium-1"></i>
+                                            See all</button>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-de mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>First name</th>
+                                                    <th>Last name</th>
+                                                    <th>Phone</th>
+                                                    <th>Class</th>
+                                                    <th>School</th>
+                                                    <th>Add date</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                {% for candidat in candidates_data %}
+                                                    <tr>
+                                                        {% if candidat['sexe'] == 'F' %}
+                                                        <td><img style="width: 1em; margin-right: 10px;" src="../static/app-assets/images/icons/female-symbol.png" alt="">{{ candidat['prenom'] }}</td>
+                                                        {% else %}
+                                                        <td><img style="width: 1em; margin-right: 10px;" src="../static/app-assets/images/icons/gender.png" alt="">{{ candidat['prenom'] }}</td>
+                                                        {% endif %}
+                                                        <td>{{ candidat['nom'] }}</td>
+                                                        <td>{{ candidat['telephone'] }}</td>
+                                                        <td>{{ candidat['classe'] }}</td>
+                                                        <td>{{ candidat['etablissement'] }}</td>
+                                                        <td>{{ candidat['date_ajout'] }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Active Orders -->
+                </section>
+                <!-- // stats with icon, subtitle & bg gradient color section end -->
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    {% include "footer.html" %}
+    <!-- BEGIN: Vendor JS-->
+    <script src="../static/app-assets/vendors/js/material-vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../static/app-assets/vendors/js/extensions/jquery.knob.min.js"></script>
+    <script src="../static/app-assets/vendors/js/charts/raphael-min.js"></script>
+    <script src="../static/app-assets/vendors/js/charts/morris.min.js"></script>
+    <script src="../static/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="../static/app-assets/js/core/app-menu.js"></script>
+    <script src="../static/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="../static/app-assets/js/scripts/pages/material-app.js"></script>
+    <script src="../static/app-assets/js/scripts/cards/card-statistics.js"></script>
+    <!-- END: Page JS-->
+    {% endblock %}
+</body>
+<!-- END: Body-->
+
+<!-- END: Body-->
+
+</html>
