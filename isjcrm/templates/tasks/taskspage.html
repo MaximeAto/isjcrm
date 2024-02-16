@@ -165,8 +165,6 @@
                                             <div class="compose-quill-toolbar pb-0">
                                                 <span class="ql-formats mr-0">
                                                     <button class="ql-bold"></button>
-                                                    <button class="ql-link"></button>
-                                                    <button class="ql-image"></button>
                                                 </span>
                                             </div>
                                         </div>
@@ -249,7 +247,7 @@
                                     <!-- task list start -->
                                     <ul class="todo-task-list-wrapper list-unstyled" id="todo-task-list-drag">
                                         {% for task in tasks %}
-                                        <li class="todo-item" data-name="{{task.assigned}}">
+                                        <li class="todo-item" data-id_user="{{task.id_user}}" data-status="{{task.status}}" data-deadline="{{task.deadline}}" data-objective="{{task.objective}}" data-id="{{task.id}}" data-name="{{task.assigned}}">
                                             
                                             <div class="todo-title-wrapper d-flex justify-content-sm-between justify-content-end align-items-center">
                                                 <div class="todo-title-area d-flex">

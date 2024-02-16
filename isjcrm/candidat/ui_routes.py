@@ -52,7 +52,10 @@ def get_all_candidates():
                     candidates_active = "active"
                     )
         else:
-            return jsonify(message='Aucun candidats existants')
+            return render_template("candidates/candidates_list.html",
+                    name = name,
+                    candidates_active = "active"
+                    )
     except SQLAlchemyError as e:
         return jsonify(message="Erreur lors du traitement de la requête")
     

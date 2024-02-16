@@ -66,7 +66,7 @@ $(function () {
     singleDatePicker: true,
     showDropdowns: true,
     locale: {
-      format: 'MM/DD'
+      format: 'YY/MM/DD'
     }
   });
 
@@ -81,12 +81,6 @@ $(function () {
   // select assigner
   selectUsersName.select2({
     placeholder: "Unassigned",
-    dropdownAutoWidth: true,
-    width: '100%'
-  });
-
-  // select label
-  selectAssignLable.select2({
     dropdownAutoWidth: true,
     width: '100%'
   });
@@ -299,13 +293,17 @@ $(function () {
     var $this = $(this);
     globalThis = $this;
 
+    var task_id = $this.attr('data-id');
+    var task_deadline = $this.attr('data-deadline');
+    var task_objective = $this.attr('data-objective');
+
     todoNewTasksidebar.addClass('show');
     appContentOverlay.addClass('show');
 
     var todoTitle = $this.find(".todo-title").text();
     taskTitle.val(todoTitle);
     var compose_editor = $(".compose-editor .ql-editor");
-    compose_editor[0].innerHTML = todoTitle;
+    compose_editor[0].innerHTML = task_objective;
 
     // if avatar is available
     if ($this.find(".avatar img").length) {

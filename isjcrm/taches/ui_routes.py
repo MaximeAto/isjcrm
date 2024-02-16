@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, render_template, request
 from flask_login import current_user, login_required
 from isjcrm.candidat.mashmallow import Mashmallow
 from isjcrm.users.mashmallow import Mashmallow as Mashmallow2
-
+from isjcrm.taches.mashmallow import MashmallowTask
 from isjcrm.candidat.models import Candidat
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -19,6 +19,8 @@ def get_all_tasks():
   username = current_user.username
   users = User.query.filter().all()
   tasks = Task.query.filter().all()
+  task_mashmallow = MashmallowTask(many=True)
+  tasks = task_mashmallow.dump(tasks)
   name = current_user.first_name + " " + current_user.last_name
   
   return render_template("tasks/taskspage.html", name = name, users = users, tasks = tasks)
