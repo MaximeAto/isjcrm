@@ -118,14 +118,6 @@ $(function () {
     theme: 'snow'
   });
 
-  //Assigner Comment Quill editor
-  var commentEditor = new Quill('.snow-container .comment-editor', {
-    modules: {
-      toolbar: '.comment-quill-toolbar'
-    },
-    placeholder: 'Write a Comment...',
-    theme: 'snow'
-  });
 
   // **************Sidebar Left**************//
   // -----------------------------------------
@@ -173,8 +165,6 @@ $(function () {
     taskTitle.val("");
     var compose_editor = $(".compose-editor .ql-editor");
     compose_editor[0].innerHTML = "";
-    var comment_editor = $(".comment-editor .ql-editor");
-    comment_editor[0].innerHTML = "";
     selectAssignLable.attr("disabled", "true");
   });
 
@@ -183,6 +173,39 @@ $(function () {
     sideBarLeft.removeClass('show');
     appContentOverlay.removeClass('show');
   });
+
+
+  //**** fiter with left sidebar*****//
+
+  // Fonction pour filtrer les éléments en fonction du statut
+  function filterTasksByStatus(status) {
+    // Masquer tous les éléments de la liste
+    $('.todo-item').hide();
+    
+    // Afficher uniquement les éléments qui correspondent au statut sélectionné
+    $('.todo-item[data-status="' + status + '"]').show();
+  }
+
+  // Gestionnaire de clic pour les filtres de la barre latérale
+  $('.filter-item').on('click', function (event) {
+    event.preventDefault();
+
+    // Récupérer le statut associé au filtre
+    var status = $(this).data('status');
+    console.log(status);
+    // Appliquer le filtre
+    filterTasksByStatus(status);
+  });
+
+  // Gestionnaire de clic pour le filtre "All"
+  $('#seeall.active').on('click', function (event) {
+    event.preventDefault();
+
+    // Afficher tous les éléments
+    $('.todo-item').show();
+  });
+
+
 
   // **************New Task sidebar**************//
   // ---------------------------------------------
@@ -244,8 +267,6 @@ $(function () {
       todoNewTasksidebar.find('textarea').val("");
       var compose_editor = $(".compose-editor .ql-editor");
       compose_editor[0].innerHTML = "";
-      var comment_editor = $(".comment-editor .ql-editor");
-      comment_editor[0].innerHTML = "";
       selectAssignLable.attr("disabled", "true");
     }, 100)
   });
@@ -297,6 +318,8 @@ $(function () {
     var task_deadline = $this.attr('data-deadline');
     var task_objective = $this.attr('data-objective');
 
+    $('.pickadate').val(task_deadline)
+
     todoNewTasksidebar.addClass('show');
     appContentOverlay.addClass('show');
 
@@ -318,8 +341,6 @@ $(function () {
 
     avatarUserImage.attr("src", avatarSrc);
     var assignName = $this.attr('data-name');
-
-    // alert(assignName)
 
     $(".select2-users-name").val(assignName).trigger('change');
 

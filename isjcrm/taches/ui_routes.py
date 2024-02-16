@@ -19,8 +19,20 @@ def get_all_tasks():
   username = current_user.username
   users = User.query.filter().all()
   tasks = Task.query.filter().all()
+  done = Task.query.filter_by(status="Done").count()
+  nodone = Task.query.filter_by(status="Not do").count()
+  outdate = Task.query.filter_by(status="Outdate").count()
+  
   task_mashmallow = MashmallowTask(many=True)
   tasks = task_mashmallow.dump(tasks)
   name = current_user.first_name + " " + current_user.last_name
   
-  return render_template("tasks/taskspage.html", name = name, users = users, tasks = tasks)
+  return render_template("tasks/taskspage.html", 
+                         tasks_active = "active",
+                         name = name, 
+                         users = users, 
+                         tasks = tasks,
+                         done = done,
+                         nodone = nodone,
+                         outdate = outdate
+                         )

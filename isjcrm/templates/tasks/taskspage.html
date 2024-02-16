@@ -70,7 +70,7 @@
                         <!-- sidebar list start -->
                         <div class="sidebar-menu-list">
                             <div class="list-group">
-                                <a href="#" class="list-group-item border-0 active">
+                                <a id="seeall" class="list-group-item border-0 active">
                                     <span class="fonticon-wrap mr-50">
                                         <i class="ft-align-justify"></i>
                                     </span>
@@ -79,23 +79,26 @@
                             </div>
                             <label class="filter-label mt-2 mb-1 pt-25">Filters</label>
                             <div class="list-group">
-                                <a href="#" class="list-group-item border-0">
+                                <a class=" filter-item list-group-item border-0" data-status="Not do">
                                     <span class="fonticon-wrap mr-50">
                                         <i class="mbri-alert"></i>
                                     </span>
                                     <span>No Done</span>
+                                    <span style="color: orange;padding-left: 1.4em">({{nodone}})</span>
                                 </a>
-                                <a href="#" class="list-group-item border-0">
+                                <a class=" filter-item list-group-item border-0" data-status="Done">
                                     <span class="fonticon-wrap mr-50">
                                         <i class="ft-check"></i>
                                     </span>
                                     <span>Done</span>
+                                    <span style="color: green;padding-left: 3em">({{done}})</span>
                                 </a>
-                                <a href="#" class="list-group-item border-0">
+                                <a class=" filter-item list-group-item border-0" data-status="Outdate">
                                     <span class="fonticon-wrap mr-50">
                                         <i class="mbri-close"></i>
                                     </span>
                                     <span>Outdated</span>
+                                    <span style="color: red; padding-left: 1em;">({{outdate}})</span>
                                 </a>
                             </div>
                         </div>
@@ -171,31 +174,6 @@
                                     </div>
                                 </div>
                                 <div class="card-body pb-1">
-                                    <div class="d-flex align-items-center mb-1">
-                                        <div class="avatar mr-75">
-                                            <img src="../static/app-assets/images/portrait/small/avatar-s-3.png" alt="charlie" width="38" height="38">
-                                        </div>
-                                        <div class="avatar-content">
-                                            Charlie created this task
-                                        </div>
-                                        <small class="ml-75 text-muted">13 days ago</small>
-                                    </div>
-                                    <!-- quill editor for comment -->
-                                    <div class="snow-container border rounded p-50 ">
-                                        <div class="comment-editor mx-75"></div>
-                                        <div class="d-flex justify-content-end">
-                                            <div class="comment-quill-toolbar pb-0">
-                                                <span class="ql-formats mr-0">
-                                                    <button class="ql-bold"></button>
-                                                    <button class="ql-link"></button>
-                                                    <button class="ql-image"></button>
-                                                </span>
-                                            </div>
-                                            <button type="button" class="btn btn-sm btn-primary comment-btn">
-                                                <span>Comment</span>
-                                            </button>
-                                        </div>
-                                    </div>
                                     <div class="mt-1 d-flex justify-content-end">
                                         <button type="button" class="btn btn-danger add-todo">Add Task</button>
                                         <button type="button" class="btn btn-danger update-todo">Save Changes</button>
@@ -236,7 +214,6 @@
                                             <span>Sort by user</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
-                                            <a class="dropdown-item ascending" href="#">my task</a>
                                             {% for user in users%}
                                             <a class="dropdown-item ascending" href="#">{{user.username}}</a>
                                             {% endfor %}
