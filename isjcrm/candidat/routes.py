@@ -79,7 +79,7 @@ def create_candidate():
     db.session.commit() 
 
     return jsonify(message='Candidat enregistré'), 200
-    
+
 
 @candidats.route("/delete_candidate/<int:candidate_id>", methods=['DELETE'])
 def delete_candidate(candidate_id):
