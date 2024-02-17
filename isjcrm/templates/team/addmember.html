@@ -37,9 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../static/app-assets/css/pages/page-users.css">
     <!-- END: Page CSS-->
 
-    <link rel="stylesheet" type="text/css" href="../static/app-assets/css/plugins/extensions/toastr.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
     <!-- END: Custom CSS-->
@@ -180,15 +177,9 @@
                 method: 'POST',
                 body: formData 
             })
-            .then(response => {
-                if(!response.ok){
-                    return response.json().then(data => {
-                        showErrorToast(data.message)
-                    
-                    });
-                }else{
-                    showSuccessToast(data.message)
-                }
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("formular").reset();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -217,11 +208,6 @@
     <script src="../static/app-assets/js/scripts/pages/material-app.js"></script>
     <script src="../static/app-assets/js/scripts/navs/navs.js"></script>
     <!-- END: Page JS-->
-
-    
-    <script src="../static/app-assets/vendors/js/extensions/toastr.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {%endblock%}
 </body>
 <!-- END: Body-->

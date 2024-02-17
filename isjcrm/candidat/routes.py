@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, current_app, jsonify, request
+from flask_login import current_user
 from isjcrm import db
 from .mashmallow import Mashmallow
 from sqlalchemy.exc import SQLAlchemyError
@@ -57,7 +58,6 @@ def create_candidate():
     classe = request.form.get('classe')
     etablissement = request.form.get('etablissement')
     pieces_jointes  = request.form.get('pieces')
-    etat_candidature = request.form.get('etat_candidature')
     id_user= request.form.get('id_user')
 
     candidate_info = Candidat(
@@ -68,9 +68,9 @@ def create_candidate():
         telephone_parent= telephone_parent,
         classe= classe,
         choix= choix,
-        etatcandidature= etat_candidature,
+        etatcandidature= "NOUVEAU",
         pieces_jointes =  pieces_jointes ,
-        id_user= id_user,
+        id_user= current_user.username,
         sexe = sexe,
         etablissement = etablissement
     )

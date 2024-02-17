@@ -45,22 +45,22 @@ def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
     CORS(app)
     # connexion local
-    # db_config = {
-    #     'host': 'localhost',
-    #     'user': 'postgres',
-    #     'password': '10322',
-    #     'database': 'isjcrm',
-    #     'port': '5432'
-    # }
-
-    # Connexion distante
     db_config = {
-        'host': 'dpg-cn102nug1b2c738bl5gg-a.frankfurt-postgres.render.com',
-        'user': 'isjcrm_db_user',
-        'password': 'WwL3uUBvojAp2THxDDfD0IVFvOla3tnK',
-        'database': 'isjcrm_db',
+        'host': 'localhost',
+        'user': 'postgres',
+        'password': '10322',
+        'database': 'isjcrm',
         'port': '5432'
     }
+
+    # Connexion distante
+    # db_config = {
+    #     'host': 'dpg-cn102nug1b2c738bl5gg-a.frankfurt-postgres.render.com',
+    #     'user': 'isjcrm_db_user',
+    #     'password': 'WwL3uUBvojAp2THxDDfD0IVFvOla3tnK',
+    #     'database': 'isjcrm_db',
+    #     'port': '5432'
+    # }
     
     app.config['SECRET_KEY'] = config.SECRET_KEY
     #Charger les configurations à partir de l'objet config
