@@ -66,7 +66,7 @@ $(function () {
     singleDatePicker: true,
     showDropdowns: true,
     locale: {
-      format: 'YY/MM/DD'
+      format: 'YYYY-MM-DD'
     }
   });
 
@@ -220,8 +220,13 @@ $(function () {
         return '<div class="avatar-content"><i class="ft-user font-medium-4"></i></div>'
       }
     };
+   
     // if add task field are fiill and create a new task
     if (taskTitle.val().length > 0) {
+
+      var objective = $(".compose-editor .ql-editor").text();
+      var assignee = $(".select2-users-name").val();
+      var deadline = $('.pickadate').val()
       var titleTask = taskTitle.val(),
         selectAssign = $(".select2-users-name option:selected").val(),
         $randomID = Math.floor((Math.random() * 100) + Date.now()), //generate random id
@@ -246,6 +251,27 @@ $(function () {
             '</div>' + 
          '</div>'+
         '</li>');
+
+      const formData = new FormData();
+      formData.append('objective', objective);
+      formData.append('deadline', deadline);  // Remplacez par votre date
+      formData.append('status', 'Not do');
+      formData.append('assigned', assignee);
+      formData.append('titre',taskTitle.val() );
+
+      // Configuration de la requête fetch
+      fetch('taches/create_task', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);  // Affichez la réponse du serveur dans la console
+        })
+        .catch(error => {
+          console.error('Erreur lors de la requête fetch:', error);
+        })
+
       // new task sidebar, overlay hide
       todoNewTasksidebar.removeClass('show');
       appContentOverlay.removeClass('show');
@@ -257,6 +283,7 @@ $(function () {
       selectAssignLable.attr("disabled", "true");
     }
   });
+
 
   // On Click of Close Icon btn, cancel btn and overlay remove show class from new task sidebar and overlay
   // and reset all form fields
@@ -273,6 +300,40 @@ $(function () {
 
   // Update Task
   updateTodo.on("click", function () {
+
+     // Récupérer les valeurs mises à jour depuis la barre latérale
+     var updatedTitle = taskTitle.val();
+     var updatedObjective = $(".compose-editor .ql-editor").text();
+     var updatedAssignee = $(".select2-users-name").val();
+     var updatedDeadline = $('.pickadate').val()
+
+    // Appliquer les valeurs mises à jour à l'élément de la liste
+    globalThis.attr('data-deadline', updatedDeadline);
+    globalThis.attr('data-objective', updatedObjective);
+    globalThis.find(".todo-title").text(updatedTitle);
+    globalThis.attr('data-name', updatedAssignee);
+    var statusValue = globalThis.attr('data-id');
+
+    var formData = new FormData()
+    formData.append('id',statusValue)
+    formData.append('titre',updatedTitle)
+    formData.append('objective',updatedObjective)
+    formData.append('deadline',updatedDeadline)
+    formData.append('assigned',updatedAssignee)
+
+    fetch(`taches/update_task/${statusValue}`, {
+      method: 'PUT',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Gérez la réponse JSON retournée par l'endpoint
+        console.log('Mise à jour réussie :', data.message);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la mise à jour :', error);
+      });
+
     todoNewTasksidebar.removeClass('show');
     appContentOverlay.removeClass('show');
     selectAssignLable.attr("disabled", "true");
@@ -314,9 +375,9 @@ $(function () {
     var $this = $(this);
     globalThis = $this;
 
-    var task_id = $this.attr('data-id');
     var task_deadline = $this.attr('data-deadline');
     var task_objective = $this.attr('data-objective');
+    var task_status = $this.attr('data-status');
 
     $('.pickadate').val(task_deadline)
 
@@ -347,7 +408,18 @@ $(function () {
     // update button has remove class d-none & add class d-none in add todo button
     updateTodo.removeClass("d-none");
     addTodo.addClass("d-none");
-    markCompleteBtn.removeClass("d-none");
+    if(task_status == "Not do"){
+      markCompleteBtn.removeClass("d-none");
+    }else{
+      markCompleteBtn.addClass("d-none");
+    }
+
+    if(task_status == "Not do" || task_status == "Do"){
+      updateTodo.removeClass("d-none")
+    }else{
+      updateTodo.addClass("d-none")
+    }
+    
     newTaskTitle.addClass("d-none");
 
   }).on('click', '.todo-item-favorite', function (e) {
@@ -368,6 +440,29 @@ $(function () {
 
   // Complete button click action
   markCompleteBtn.on("click", function () {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+    };
+
+    var task_id = globalThis.attr("data-id")
+    console.log(task_id);
+    fetch(`taches/mark_task_as_done/${task_id}`,requestOptions)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log(data); // Afficher la réponse du serveur
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
     globalThis.addClass("completed");
     globalThis.find(".custom-control-input").prop("checked", true);
     selectAssignLable.attr("disabled", "true");

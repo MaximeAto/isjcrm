@@ -282,9 +282,7 @@
                         />
                       </button>
                       <button
-                        class="btn btn-primary btn-sm"
-                        data-toggle="modal"
-                        data-target="#AddContactModal"
+                        class=" add btn btn-primary btn-sm"
                       >
                         <span class="d-md-block d-none"
                           ><span class="mbri-plus"></span> Add candidate</span
@@ -609,116 +607,10 @@
           window.location =
             "{{url_for('ui_candidats.get_all_candidates', kanban=True)}}";
         });
-    //     // Lorsque le bouton "Edit" est cliqué
-    //     $(".primary").click(function () {
-    //       // Récupérer l'ID du candidat à partir de l'attribut data
-    //       var userId = $(this).data("id");
-    //       username = userId;
-
-    //       // alert(userId);
-
-    //       // Récupérer les informations du candidat par Ajax (remplacez cette partie avec votre logique)
-    //       $.ajax({
-    //         url: "users/get_user_by_id/" + userId,
-    //         method: "GET",
-    //         success: function (data) {
-    //           // Remplir les champs du formulaire dans le modal avec les données du candidat
-    //           $("#username").val(data.username);
-    //           $("#first_name").val(data.first_name);
-    //           $("#last_name").val(data.last_name);
-    //           $("#email").val(data.email);
-    //           $("#phone_number").val(data.phone_number);
-    //           $("#fav").text(data.favorite).addClass("d-none");
-
-    //           // Ouvrir le modal
-    //           $("#EditUserModal").modal("show");
-    //         },
-    //         error: function (err) {
-    //           console.log(err);
-    //         },
-    //       });
-    //     });
-
-    //     // Lorsque le bouton "Edit" dans le modal est cliqué
-    //     $("#edit-user-item").click(function () {
-    //       // Récupérer les données du formulaire
-    //       var formData = {
-    //         username: $("#username").val(),
-    //         first_name: $("#first_name").val(),
-    //         last_name: $("#last_name").val(),
-    //         email: $("#email").val(),
-    //         phone_number: $("#phone_number").val(),
-    //       };
-
-    //       // Envoyer les données du formulaire par Ajax
-    //       $.ajax({
-    //         url: "users/update_user/" + username,
-    //         method: "PUT",
-    //         data: formData,
-    //         success: function (response) {
-    //           // Fermer le modal
-    //           $("#EditUserModal").modal("hide");
-
-    //           showAlert("success", response.message);
-
-    //           // Mettre à jour les données affichées dans le tableau sans actualiser la page
-    //           // Vous devrez implémenter cette fonctionnalité en fonction de votre structure HTML
-    //           updateTableWithData(formData);
-    //         },
-    //         error: function (err) {
-    //           console.log(err.responseJSON.message);
-    //         },
-    //       });
-    //     });
-
-    //     // Souscrire à des mises à jour
-    //     updateSubject.subscribe((userData) => {
-    //       var tableRow = $(
-    //         '#members tbody tr[data-user-id="' + userData.username + '"]'
-    //       );
-
-    //       tableRow
-    //         .find(".name")
-    //         .text(userData.first_name + " " + userData.last_name);
-    //       tableRow
-    //         .find(".email")
-    //         .attr("href", "mailto:" + userData.email)
-    //         .text(userData.email);
-    //       tableRow.find(".phone").text(userData.phone_number);
-
-    //       console.log(
-    //         "Membre mis à jour avec succès! ",
-    //         "de ",
-    //         userData.username
-    //       );
-    //     });
-
-    //     function updateTableWithData(userData) {
-    //       updateSubject.next(userData);
-    //     }
-
-    //     function showAlert(type, message) {
-    //       // Afficher une alerte Bootstrap en fonction du type
-    //       var alertClass =
-    //         type === "success" ? "alert-success" : "alert-danger";
-
-    //       var alertHtml =
-    //         '<div class="alert ' +
-    //         alertClass +
-    //         ' alert-dismissible fade show" role="alert">' +
-    //         "<strong>" +
-    //         type.charAt(0).toUpperCase() +
-    //         type.slice(1) +
-    //         "!</strong> " +
-    //         message +
-    //         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-    //         '<span aria-hidden="true">&times;</span></button></div>';
-
-    //       // Ajouter l'alerte à un conteneur d'alertes dans votre page HTML
-    //       $("#alert-container").html(alertHtml);
-    //     }
-
-        
+        $('.add').click(function(){
+          window.location =
+            "{{url_for('ui_candidats.addpage')}}";
+        })
       });
     </script>
 

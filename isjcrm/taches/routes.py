@@ -6,7 +6,7 @@ from isjcrm import db
 from flask import request
 from random import randint
 from faker import Faker
-
+from flask_login import current_user
 taches = Blueprint('taches', __name__)
 
 fake = Faker()
@@ -16,16 +16,15 @@ fake = Faker()
 #Add 100 tasks
 
 def create_fake_task():
-    current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     task = Task(
         titre=fake.sentence(),
         objective=fake.text(),
-        deadline=fake.date_time_between(start_date='now', end_date='+30d'),
+        deadline=(datetime.now() + timedelta(days=fake.random_int(min=1, max=30))).date(),
         priority=randint(1, 5),
         status=fake.random_element(elements=('Not do', 'Outdate', 'Done')),
-        assigned=fake.random_element(elements=('maxato', 'sjohnson','jillmartin','lbass')),
-        id_user= fake.random_element(elements=('maxato', 'sjohnson','jillmartin','lbass')),
+        assigned=fake.random_element(elements=('maxato', 'jessicalawson','tammy74','kelly18')),
+        id_user= fake.random_element(elements=('maxato', 'jessicalawson','tammy74','kelly18')),
     )
 
     db.session.add(task)
@@ -40,26 +39,25 @@ def hundred_task():
 
 @taches.route("/create_task", methods=["POST"])
 def create_task():
+    titre = request.form.get('titre')
     objective = request.form.get('objective')
     deadline_str = request.form.get('deadline')
     priority = request.form.get('priority')
     status = request.form.get('status')
-    id_user = request.form.get('id_user')
-    id_candidat = request.form.get('id_candidat')  
 
     deadline = datetime.strptime(deadline_str, '%Y-%m-%d') if deadline_str else None
     assigned = request.form.get('assigned')
 
-        # Vérifier si l'utilisateur existe
-    user = User.query.get(id_user)
+    # Vérifier si l'utilisateur existe
+    user = User.query.get(current_user.username)
     if user is None:
-        return "L'utilisateur avec cet ID n'existe pas. Veuillez fournir un ID d'utilisateur valide."
+        return jsonify(message = "L'utilisateur avec cet ID n'existe pas. Veuillez fournir un ID d'utilisateur valide.")
 
     # Création de la tâche
-    new_task = Task(objective=objective, deadline=deadline, priority=priority, status=status, id_user=id_user, id_candidat=id_candidat, assigned=assigned)
+    new_task = Task(titre = titre , objective=objective, deadline=deadline, priority=priority, status=status, assigned=assigned, id_user = current_user.username)
     db.session.add(new_task)
     db.session.commit()
-    return "le tache a bien ete creer et programmer."
+    return jsonify(message = "le tache a bien ete creer et programmer")
 
 @taches.route("/get_task/<int:task_id>", methods=["GET"])
 def get_task(task_id):
@@ -98,7 +96,7 @@ def update_task(task_id):
     task.status = request.form.get('status', task.status)
     task.assigned = request.form.get('assigned', task.assigned)
     task.id_user = request.form.get('id_user', task.id_user)
-    task.id_candidat = request.form.get('id_candidat', task.id_candidat)
+    task.titre = request.form.get('titre', task.titre)
 
     # Enregistrer les modifications dans la base de données
     db.session.commit()
@@ -112,14 +110,26 @@ def update_task(task_id):
         'status': task.status,
         'assigned': task.assigned,
         'id_user': task.id_user,
-        'id_candidat': task.id_candidat
+        'titre' : task.titre
     }
 
-    return jsonify(task_data)
+    return jsonify(message = "good")
 
 @taches.route("/mark_task_as_done/<int:task_id>", methods=["POST"])
 def mark_task_as_done(task_id):
-    pass
+    try:
+        # Récupérer la tâche à partir de la base de données
+        task = Task.query.get_or_404(task_id)
+
+        # Marquer la tâche comme terminée
+        task.status = "Done"
+
+        # Enregistrer les modifications dans la base de données
+        db.session.commit()
+
+        return jsonify({"message": "Task marked as done successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @taches.route("/get_all_tasks", methods=["GET"])
 def get_all_tasks():
@@ -149,6 +159,7 @@ def get_user_tasks(user_id) :
 @taches.route("/get_user_tasks/<int:user_id>", methods=["GET"])
 def get_overdue_tasks() :
     pass
+
 
 @taches.route("/delete_tasks/<int:task_id>", methods=["DELETE"])
 def delete_task(task_id):

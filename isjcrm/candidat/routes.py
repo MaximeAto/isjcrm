@@ -29,7 +29,7 @@ def create_fake_candidat():
         classe=fake.random_element(elements=('Première', 'Terminale')),
         choix=fake.random_element(elements=('1', '2','3')),
         pieces_jointes=fake.file_name(),
-        id_user=fake.random_element(elements=('maxato', 'sjohnson','jillmartin','lbass')),
+        id_user=fake.random_element(elements=('maxato', 'jessicalawson','tammy74','kelly18')),
         date_ajout=current_date
     )
     db.session.add(candidat)
